@@ -1,5 +1,19 @@
 #include <stdio.h>
 
+void ucitajKurs(double kurs[3][3], const char* nazivFajla) {
+    FILE* fajl = fopen(nazivFajla, "r");
+    if (fajl == NULL) {
+        printf("Greška pri otvaranju datoteke!\n");
+        return;
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            fscanf(fajl, "%lf", &kurs[i][j]);
+        }
+    }
+    fclose(fajl);
+}
+
 double konvertuj(double iznos, int izValute, int uValutu, double kurs[3][3]) {
     return iznos * kurs[izValute - 1][uValutu - 1];
 }
@@ -7,11 +21,8 @@ double konvertuj(double iznos, int izValute, int uValutu, double kurs[3][3]) {
 int main() {
     printf("Dobrodošli u konvertor valuta!\n");
 
-    double kurs[3][3] = {
-        {1.0, 117.5, 0.85},
-        {0.0085, 1.0, 0.0072},
-        {1.18, 138.0, 1.0}
-    };
+    double kurs[3][3];
+    ucitajKurs(kurs, "kursna_lista.txt");
 
     int izValute, uValutu;
     double iznos;
