@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+double konvertuj(double iznos, int izValute, int uValutu, double kurs[3][3]) {
+    return iznos * kurs[izValute - 1][uValutu - 1];
+}
+
 int main() {
     printf("Dobrodošli u konvertor valuta!\n");
 
@@ -10,7 +14,7 @@ int main() {
     };
 
     int izValute, uValutu;
-    double iznos, rezultat;
+    double iznos;
 
     printf("Unesite iznos: ");
     scanf("%lf", &iznos);
@@ -21,7 +25,7 @@ int main() {
     printf("Unesite valutu u koju konvertujete (1-EUR, 2-RSD, 3-USD): ");
     scanf("%d", &uValutu);
 
-    rezultat = iznos * kurs[izValute - 1][uValutu - 1];
+    double rezultat = konvertuj(iznos, izValute, uValutu, kurs);
     printf("Rezultat: %.2f\n", rezultat);
 
     return 0;
