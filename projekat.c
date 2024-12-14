@@ -9,15 +9,20 @@ int main() {
         {1.18, 138.0, 1.0}
     };
 
-    int izbor;
-    printf("Unesite broj za validaciju testa funkcionalnosti (1-3): ");
-    scanf("%d", &izbor);
+    int izValute, uValutu;
+    double iznos, rezultat;
 
-    if (izbor >= 1 && izbor <= 3) {
-        printf("Unos je validan.\n");
-    } else {
-        printf("Unos nije validan.\n");
-    }
+    printf("Unesite iznos: ");
+    scanf("%lf", &iznos);
+
+    printf("Unesite valutu iz koje konvertujete (1-EUR, 2-RSD, 3-USD): ");
+    scanf("%d", &izValute);
+
+    printf("Unesite valutu u koju konvertujete (1-EUR, 2-RSD, 3-USD): ");
+    scanf("%d", &uValutu);
+
+    rezultat = iznos * kurs[izValute - 1][uValutu - 1];
+    printf("Rezultat: %.2f\n", rezultat);
 
     return 0;
 }
