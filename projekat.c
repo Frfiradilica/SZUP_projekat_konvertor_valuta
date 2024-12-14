@@ -9,6 +9,15 @@ int main() {
         {1.18, 138.0, 1.0}
     };
 
-    printf("Kursna lista dodata za osnovne valute (EUR, RSD, USD).\n");
+    int izbor;
+    printf("Unesite broj za validaciju testa funkcionalnosti (1-3): ");
+    scanf("%d", &izbor);
+
+    if (izbor >= 1 && izbor <= 3) {
+        printf("Unos je validan.\n");
+    } else {
+        printf("Unos nije validan.\n");
+    }
+
     return 0;
 }
